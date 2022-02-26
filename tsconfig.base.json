@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@sumhrms/grpc-registry": ["libs/grpc-registry/src/index.ts"],
+      "@sumhrms/protodata": ["libs/protodata/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

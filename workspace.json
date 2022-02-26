@@ -1,4 +1,10 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "attendance": "apps/attendance",
+    "grpc-registry": "libs/grpc-registry",
+    "leave": "apps/leave",
+    "protodata": "libs/protodata",
+    "server": "apps/server"
+  }
 }

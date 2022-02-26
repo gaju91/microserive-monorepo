@@ -1,0 +1,59 @@
+{
+  "root": "apps/leave",
+  "sourceRoot": "apps/leave/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/leave",
+        "main": "apps/leave/src/main.ts",
+        "tsConfig": "apps/leave/tsconfig.app.json",
+        "assets": [
+          "apps/leave/src/assets",
+          {
+            "input": "libs/protodata/src/assets",
+            "glob": "**/*",
+            "output": "assets/proto"
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/leave/src/environments/environment.ts",
+              "with": "apps/leave/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "leave:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/leave/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/leave"],
+      "options": {
+        "jestConfig": "apps/leave/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
